@@ -7,21 +7,21 @@ import (
 )
 
 var (
-	kuaidailipage int  = 10
-	xicidailipage int  = 10
-	pcdailipage   int  = 1
-	showErrors    bool = true
+	kuaidailipage = 10
+	xicidailipage = 10
+	pcdailipage   = 1
+	showErrors    = true
 )
 
-func setPcdailiUrl(types int, curpage int) string {
+func setPcdailiURL(types int, curpage int) string {
 	return fmt.Sprintf("http://www.pcdaili.com/index.php?m=daili&a=free&type=%d&page=%d", types, curpage)
 }
 
-func setKuaidailiUrl(curpage int) string {
+func setKuaidailiURL(curpage int) string {
 	return fmt.Sprintf("https://www.kuaidaili.com/free/inha/%d", curpage)
 }
 
-func setxXcidailiiUrl(curpage int) string {
+func setxXcidailiURL(curpage int) string {
 	return fmt.Sprintf("http://www.xicidaili.com/nn/%d", curpage)
 }
 

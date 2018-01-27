@@ -13,7 +13,7 @@ func GetKuaidaili(ch chan *[]map[string]string) {
 	var proxyList []map[string]string
 	mapList := make(map[string]string)
 	for i := 1; i <= kuaidailipage; i++ {
-		url = setKuaidailiUrl(i)
+		url = setKuaidailiURL(i)
 		resp, _, err := request.Get(url).
 			Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8").
 			Set("Referer", "https://www.kuaidaili.com/free").
