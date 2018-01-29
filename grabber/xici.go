@@ -13,7 +13,7 @@ func GetXicidaili(ch chan *[]map[string]string) {
 	var proxyList []map[string]string
 	mapList := make(map[string]string)
 	for i := 1; i <= xicidailipage; i++ {
-		url = setxXcidailiiUrl(i)
+		url = setxXcidailiiURL(i)
 		resp, _, err := request.Get(url).
 			Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8").
 			Set("Referer", "http://www.xicidaili.com/nn/").

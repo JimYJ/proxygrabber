@@ -11,18 +11,23 @@ var (
 	xicidailipage int  = 10
 	pcdailipage   int  = 1
 	showErrors    bool = true
+	spysone            = "http://spys.one/en/http-proxy-list/"
 )
 
-func setPcdailiUrl(types int, curpage int) string {
+func setPcdailiURl(types int, curpage int) string {
 	return fmt.Sprintf("http://www.pcdaili.com/index.php?m=daili&a=free&type=%d&page=%d", types, curpage)
 }
 
-func setKuaidailiUrl(curpage int) string {
+func setKuaidailiURl(curpage int) string {
 	return fmt.Sprintf("https://www.kuaidaili.com/free/inha/%d", curpage)
 }
 
 func setxXcidailiiUrl(curpage int) string {
 	return fmt.Sprintf("http://www.xicidaili.com/nn/%d", curpage)
+}
+
+func setYundailiUrl(curpage int) string {
+	return fmt.Sprintf("http://www.yun-daili.com/free.asp?page=%d", curpage)
 }
 
 func printErrors(err ...interface{}) {
