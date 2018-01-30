@@ -1,10 +1,11 @@
 package grabber
 
 import (
-	"github.com/PuerkitoBio/goquery"
-	"github.com/parnurzeal/gorequest"
 	"strings"
 	"time"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/parnurzeal/gorequest"
 )
 
 func GetPcdaili(ch chan *[]map[string]string) {
@@ -17,7 +18,7 @@ func GetPcdaili(ch chan *[]map[string]string) {
 			continue
 		}
 		for i := 1; i <= pcdailipage; i++ {
-			url = setPcdailiURl(types, i)
+			url = setPcdailiURL(types, i)
 			resp, _, err := request.Get(url).
 				Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8").
 				Set("Referer", "http://www.pcdaili.com/index.php").

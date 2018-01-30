@@ -1,32 +1,45 @@
 package grabber
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"strings"
+
+	"golang.org/x/text/encoding/simplifiedchinese"
+	"golang.org/x/text/transform"
 )
 
 var (
-	kuaidailipage int  = 10
-	xicidailipage int  = 10
-	pcdailipage   int  = 1
-	showErrors    bool = true
-	spysone            = "http://spys.one/en/http-proxy-list/"
+	kuaidailipage = 10
+	xicidailipage = 10
+	yundailipage  = 4
+	pcdailipage   = 1
+	showErrors    = true
 )
 
-func setPcdailiURl(types int, curpage int) string {
+type Charset string
+
+const (
+	UTF8     = Charset("UTF-8")
+	GB18030  = Charset("GB18030")
+	HZGB2312 = Charset("HZ-GB2312")
+)
+
+func setPcdailiURL(types int, curpage int) string {
 	return fmt.Sprintf("http://www.pcdaili.com/index.php?m=daili&a=free&type=%d&page=%d", types, curpage)
 }
 
-func setKuaidailiURl(curpage int) string {
+func setKuaidailiURL(curpage int) string {
 	return fmt.Sprintf("https://www.kuaidaili.com/free/inha/%d", curpage)
 }
 
-func setxXcidailiiUrl(curpage int) string {
+func setxXcidailiURL(curpage int) string {
 	return fmt.Sprintf("http://www.xicidaili.com/nn/%d", curpage)
 }
 
-func setYundailiUrl(curpage int) string {
+func setYundailiURL(curpage int) string {
 	return fmt.Sprintf("http://www.yun-daili.com/free.asp?page=%d", curpage)
 }
 
@@ -47,4 +60,40 @@ func removeSpaceElem(strArr []string) []string {
 		}
 	}
 	return strArr
+}
+
+func ConvertByte2String(byte []byte, charset Charset) string {
+
+	var str string
+	switch charset {
+	case GB18030:
+		var decodeBytes, _ = simplifiedchinese.GB18030.NewDecoder().Bytes(byte)
+		str = string(decodeBytes)
+	case HZGB2312:
+		var decodeBytes, _ = simplifiedchinese.HZGB2312.NewDecoder().Bytes(byte)
+		str = string(decodeBytes)
+	case UTF8:
+		fallthrough
+	default:
+		str = string(byte)
+	}
+
+	return str
+}
+
+func ConvertEncoder(str string, charset string) string {
+	var s string
+	switch charset {
+	case "GBK":
+		data, _ := ioutil.ReadAll(transform.NewReader(bytes.NewReader([]byte(str)), simplifiedchinese.GBK.NewEncoder()))
+		return string(data)
+	case "GB2312":
+		data, _ := ioutil.ReadAll(transform.NewReader(bytes.NewReader([]byte(str)), simplifiedchinese.HZGB2312.NewEncoder()))
+		return string(data)
+	case "UTF8":
+		return str
+	default:
+		s = str
+	}
+	return s
 }
