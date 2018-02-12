@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/JimYJ/proxygrabber/checkproxy"
+	"github.com/JimYJ/proxygrabber/grabber"
 	"log"
-	"proxygrabber/checkproxy"
-	"proxygrabber/grabber"
 )
 
 var (
