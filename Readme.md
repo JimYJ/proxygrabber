@@ -3,6 +3,7 @@
 
 # proxygrabber 爬虫采集者
 ### proxygrabber is crawler for proxy that can auto grab proxy from proxy website and auto verify it's availability.
+### 爬虫采集者是一个自动从代理网站抓取代理服务器数据并且验证代理是否有效的程序
 
 ## Supported proxy websites are:<br>
 http://www.pcdaili.com<br>
