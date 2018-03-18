@@ -19,11 +19,15 @@ var (
 	showErrors    = true
 )
 
+//Charset 字符集
 type Charset string
 
 const (
-	UTF8     = Charset("UTF-8")
-	GB18030  = Charset("GB18030")
+	//UTF8 UTF8
+	UTF8 = Charset("UTF-8")
+	//GB18030 GBK
+	GB18030 = Charset("GB18030")
+	//HZGB2312 GB2312
 	HZGB2312 = Charset("HZ-GB2312")
 )
 
@@ -62,6 +66,7 @@ func removeSpaceElem(strArr []string) []string {
 	return strArr
 }
 
+//ConvertByte2String 转换编码
 func ConvertByte2String(byte []byte, charset Charset) string {
 
 	var str string
@@ -81,6 +86,7 @@ func ConvertByte2String(byte []byte, charset Charset) string {
 	return str
 }
 
+//ConvertEncoder 转换编码
 func ConvertEncoder(str string, charset string) string {
 	var s string
 	switch charset {

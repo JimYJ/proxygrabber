@@ -8,6 +8,7 @@ import (
 	"github.com/parnurzeal/gorequest"
 )
 
+//GetYundaili 从小马代理抓取
 func GetYundaili(ch chan *[]map[string]string) {
 	request := gorequest.New()
 	var url string

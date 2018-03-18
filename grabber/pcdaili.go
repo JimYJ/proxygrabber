@@ -8,6 +8,7 @@ import (
 	"github.com/parnurzeal/gorequest"
 )
 
+//GetPcdaili 从PC代理抓取
 func GetPcdaili(ch chan *[]map[string]string) {
 	request := gorequest.New()
 	var url string

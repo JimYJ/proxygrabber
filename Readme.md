@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/JimYJ/proxygrabber.svg?branch=master)](https://travis-ci.org/JimYJ/proxygrabber)
+[![Go Report Card](https://goreportcard.com/badge/github.com/JimYJ/proxygrabber)](https://goreportcard.com/report/github.com/JimYJ/proxygrabber)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/ugorji/go/master/LICENSE)
 
 # proxygrabber 爬虫采集者

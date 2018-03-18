@@ -8,6 +8,7 @@ import (
 	"github.com/parnurzeal/gorequest"
 )
 
+//GetXicidaili 从西刺代理抓取
 func GetXicidaili(ch chan *[]map[string]string) {
 	request := gorequest.New()
 	var url string
