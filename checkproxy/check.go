@@ -8,20 +8,21 @@ import (
 )
 
 var (
-	testUrl = []string{
+	testURL = []string{
 		"http://www.baidu.com",
 		"http://www.google.com",
 	}
 )
 var (
-	proxyUrl string
+	proxyURL string
 )
 
+//Check 检测代理是否失效
 func Check(proxylist *[]map[string]string) []map[string]string {
 	ch := make(chan map[string]string, len(*proxylist))
 	for i := 0; i < 20; i++ {
-		proxyUrl = fmt.Sprintf("%s://%s:%s", (*proxylist)[i]["type"], (*proxylist)[i]["ip"], (*proxylist)[i]["port"])
-		go checkproxy(proxyUrl, ch, (*proxylist)[i])
+		proxyURL = fmt.Sprintf("%s://%s:%s", (*proxylist)[i]["type"], (*proxylist)[i]["ip"], (*proxylist)[i]["port"])
+		go checkproxy(proxyURL, ch, (*proxylist)[i])
 	}
 	var fineProxyList []map[string]string
 	for i := 0; i < 20; i++ {
@@ -33,10 +34,10 @@ func Check(proxylist *[]map[string]string) []map[string]string {
 	return fineProxyList
 }
 
-func checkproxy(proxyUrl string, ch chan map[string]string, proxyMap map[string]string) {
+func checkproxy(proxyURL string, ch chan map[string]string, proxyMap map[string]string) {
 	fineProxy := make(map[string]string)
-	log.Println(proxyUrl)
-	request := gorequest.New().Proxy(proxyUrl).Timeout(10 * time.Second)
+	log.Println(proxyURL)
+	request := gorequest.New().Proxy(proxyURL).Timeout(10 * time.Second)
 	resp, _, err := request.Get("http://m.chn.lottedfs.com/kr").End()
 	if err != nil {
 		log.Println(err)
